@@ -1,0 +1,34 @@
+#first-image {
+    position: absolute;
+    top: 4vh;
+    left: 15vw;
+}
+
+#first-image img {
+    height: 32vh;
+    border: solid 2px #fff;
+}
+
+#second-image {
+    position: absolute;
+    top: 2vh;
+    left: 35vw;
+    z-index: 1;
+}
+
+#second-image img {
+    height: 36vh;
+    border: solid 3px #fff;
+    box-shadow: 0 0 20px 5px #000;
+}
+
+#third-image {
+    position: absolute;
+    top: 4vh;
+    right: 15vw;
+}
+
+#third-image img {
+    height: 32vh;
+    border: solid 2px #fff;
+}

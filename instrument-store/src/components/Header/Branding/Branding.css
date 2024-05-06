@@ -1,0 +1,11 @@
+.branding-container {
+    position: absolute;
+    top: 30vh;
+}
+
+.branding h1 {
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
+    color: #ffffff;
+}
