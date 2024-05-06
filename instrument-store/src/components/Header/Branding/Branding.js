@@ -4,7 +4,7 @@ import './Branding.css';
 const Branding = () => {
 
     return (
-        <div className='branding'>
+        <div className='dancing-script-header'>
             <h1>Instrumental Store</h1>
         </div>
     );
