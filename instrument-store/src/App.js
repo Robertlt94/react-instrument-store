@@ -1,77 +1,74 @@
 import React, { useState, useContext } from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import { ShoppingCartProvider } from './context/ShoppingCartContext';
 import { InventoryProvider } from './context/InventoryContext';
-import Header from './components/Header/Header';
+import HomePage from "./pages/HomePage/HomePage";
+import ProductsPage from "./pages/ProductsPage/ProductsPage";
+import AboutPage from "./pages/AboutPage/AboutPage";
+import ContactUsPage from "./pages/ContactUsPage/ContactUsPage";
+import FAQPage from './pages/FAQPage/FAQPage';
+
 
 
 function App() {
-  const [headerStart, setHeaderStart] = useState(0);
-  const [headerMiddle, setHeaderMiddle] = useState(1);
-  const [headerEnd, setHeaderEnd] = useState(2);
-  const [headerImages, setHeaderImages] = useState (
+  const [cart, setCart] = useState([]);
+  const [products, setProducts] = useState(
     [
-      {
-          description: "An individual playing the violin",
-          url: "https://news.inverhills.edu/wp-content/uploads/2012/11/concert-music-musical-instrument-violin-1170x680.jpg"
-      },
-      {
-          description: "An individual playing the guitar",
-          url: "https://lahabramusic.com/wp-content/uploads/2016/08/playing-guitar.jpeg"
-      },
-      {
-          description: "An individual playing the chello",
-          url: "https://ciomit.com/wp-content/uploads/2024/01/pexels-roxanne-minnish-7976313-1200x800.jpg"
-      },
-      {
-          description: "An individual playing the drums",
-          url: "https://articles.roland.com/wp-content/uploads/2022/02/USED_TD-07KVX-12-scaled.jpg"
-      },
-      {
-          description: "An individual playing the piano",
-          url: "https://www.bandm.co.uk/media/contentmanager/content/news/ADVANTAGES-OF-DIGITAL-PIANO-HOME_1.jpg"
-      },
-      {
-          description: "An individual playing the Saxophone",
-          url: "https://insidemusicschools.com/wp-content/uploads/2020/06/Untitled-Facebook-Cover-2400-%C3%97-1600-px-2.png"
-      }
+      { id: 1, category: "Guitar", name: "Fender 70th Anniversary Player Stratocaster Electric Guitar Nebula Noir", cost: "$999.99", url: "https://media.guitarcenter.com/is/image/MMGS7/M07989000001000-00-600x600.jpg" },
+      { id: 2, category: "Piano", name: "Yamaha P-125ABLB Digital Piano With Wooden Stand and Bench", cost: "$949.99", url: "https://www.guitarcenter.com/Yamaha/P-125ABLB-Digital-Piano-With-Wooden-Stand-and-Bench-1500000395502.gc" },
+      { id: 3, category: "Drum", name: "DW Collector's Series 4-Piece Shell Pack Twisted Walnut Chrome Hardware", cost: "$4,035.00", url: "https://media.guitarcenter.com/is/image/MMGS7/H80431000002001-00-600x600.jpg" },
+      { id: 4, category: "Violin", name: "Yamaha YEV104 Series Electric Violin", cost: "$745.99", url: "https://media.guitarcenter.com/is/image/MMGS7/J33592000000000-00-600x600.jpg" },
+      { id: 5, category: "Chello", name: "Yamaha SVC-210SK Silent Cello Brown", cost: "$3,239.99", url: "https://media.guitarcenter.com/is/image/MMGS7/463028000008000-00-600x600.jpg" },
+      { id: 6, category: "Saxophone", name: "Yamaha YAS-26 Standard Alto Saxophone Silver", cost: "$2,736.00", url: "https://media.guitarcenter.com/is/image/MMGS7/H95233000002000-00-600x600.jpg" },
+      { id: 7, category: "Trumpet", name: "Yamaha YTR-2330 Standard Bb Trumpet Bb Trumpet Silver", cost: "$1,777.00", url: "https://media.guitarcenter.com/is/image/MMGS7/H82869000001001-00-600x600.jpg" },
+      { id: 8, category: "Guitar", name: "Taylor 814ce Builder's Edition 50th Anniversary Limited-Edition Grand Auditorium Acoustic-Electric Guitar Kona Edgeburst", cost: "$4,999.00", url: "https://media.guitarcenter.com/is/image/MMGS7/M08663000001000-00-600x600.jpg" },
+      { id: 9, category: "Piano", name: "Casio GP-510BP Celviano Grand Hybrid Black", cost: "$6,299.00", url: "https://media.guitarcenter.com/is/image/MMGS7/L75140000001000-00-600x600.jpg" },
+      { id: 10, category: "Guitar", name: "Gibson Les Paul Modern Figured Electric Guitar Cobalt Burst" , cost: "$2,999.00", url: "https://media.guitarcenter.com/is/image/MMGS7/M04073000001000-00-600x600.jpg" }
+    ]
+  );
+  const [firstImage, setFirstImage] = useState(0);
+  const [secondImage, setSecondImage] = useState(1);
+  const [thirdImage, setThirdImage] = useState(2);
+  const [images, setimages] = useState(
+    [
+      { description: "An individual playing the violin", url: "https://news.inverhills.edu/wp-content/uploads/2012/11/concert-music-musical-instrument-violin-1170x680.jpg" },
+      { description: "An individual playing the guitar", url: "https://lahabramusic.com/wp-content/uploads/2016/08/playing-guitar.jpeg" },
+      { description: "An individual playing the chello", url: "https://ciomit.com/wp-content/uploads/2024/01/pexels-roxanne-minnish-7976313-1200x800.jpg" },
+      { description: "An individual playing the drums", url: "https://articles.roland.com/wp-content/uploads/2022/02/USED_TD-07KVX-12-scaled.jpg" },
+      { description: "An individual playing the piano", url: "https://www.bandm.co.uk/media/contentmanager/content/news/ADVANTAGES-OF-DIGITAL-PIANO-HOME_1.jpg" },
+      { description: "An individual playing the Saxophone", url: "https://insidemusicschools.com/wp-content/uploads/2020/06/Untitled-Facebook-Cover-2400-%C3%97-1600-px-2.png" }
     ]
   );
 
-  let imageCount = headerImages.length - 1;
+  let imageCount = images.length - 1;
 
-  const nextHeaderImage = () => {
-    headerStart < imageCount ? setHeaderStart(headerStart+1) : setHeaderStart(0);
-    headerMiddle < imageCount ? setHeaderMiddle(headerMiddle+1) : setHeaderMiddle(0);
-    headerEnd < imageCount ? setHeaderEnd(headerEnd+1) : setHeaderEnd(0);
+  const nextImage = () => {
+    firstImage < imageCount ? setFirstImage(firstImage+1) : setFirstImage(0);
+    secondImage < imageCount ? setSecondImage(secondImage+1) : setSecondImage(0);
+    thirdImage < imageCount ? setThirdImage(thirdImage+1) : setThirdImage(0);
   };
 
-  const previousHeaderImage = () => {
-    headerStart > 0 ? setHeaderStart(headerStart-1) : setHeaderStart(imageCount);
-    headerMiddle > 0 ? setHeaderMiddle(headerMiddle-1) : setHeaderMiddle(imageCount);
-    headerEnd > 0 ? setHeaderEnd(headerEnd-1) : setHeaderEnd(imageCount);
+  const previousImage = () => {
+    firstImage > 0 ? setFirstImage(firstImage-1) : setFirstImage(imageCount);
+    secondImage > 0 ? setSecondImage(secondImage-1) : setSecondImage(imageCount);
+    thirdImage > 0 ? setThirdImage(thirdImage-1) : setThirdImage(imageCount);
   }
 
   return (
     <Router>
       <ShoppingCartProvider>
         {/* <InventoryProvider> */}
-          <div>
-            <Header props={{headerImages, headerStart, headerMiddle, headerEnd, nextHeaderImage, previousHeaderImage}}/>
-            <nav>
-              <Link to='/'>All</Link>
-              <Link to='/guitar'>Guitar</Link>
-              <Link to='/piano'>Piano</Link>
-              <Link to='/drum'>Drum</Link>
-              <Link to='/flute'>Flute</Link>
-              <Link to='/harp'>Harp</Link>
-              <Link to='/saxophone'>Saxophone</Link>
-              <Link to='/trumpet'>Trumpet</Link>
-              <Link to='/violin'>Violin</Link>
-            </nav>
-          </div>
-        
+          <Routes>
+            {/* <Route path="/" element={<Layout />}> */}
+              <Route path="/" element={<HomePage props={{ images, firstImage, secondImage, thirdImage, nextImage, previousImage }} />} />
+              <Route path="products" element={<ProductsPage />} />
+              <Route path="about" element={<AboutPage />} />
+              <Route path="contact-us" element={<ContactUsPage />} />
+              <Route path="faq" element={<FAQPage />} />
+
+            {/* </Route> */}
+          </Routes>
         {/* </InventoryProvider> */}
       </ShoppingCartProvider>
     </Router>

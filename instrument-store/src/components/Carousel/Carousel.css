@@ -1,6 +1,6 @@
 #first-image {
     position: absolute;
-    top: 4vh;
+    top: 10vh;
     left: 15vw;
 }
 
@@ -11,7 +11,7 @@
 
 #second-image {
     position: absolute;
-    top: 2vh;
+    top: 8vh;
     left: 35vw;
     z-index: 1;
 }
@@ -24,7 +24,7 @@
 
 #third-image {
     position: absolute;
-    top: 4vh;
+    top: 10vh;
     right: 15vw;
 }
 

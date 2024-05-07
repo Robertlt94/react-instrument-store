@@ -1,0 +1,47 @@
+.home-navigation {
+    height: 50vh;
+    display: grid;
+    grid-template-areas: "a a a"
+                         "b c d";
+    row-gap: 3vh;
+    column-gap: 3vw;
+    margin: 3vh 5vw;
+}
+
+.home-navigation div {
+    text-align: center;
+    color: #ffffff;
+    padding: 2rem;
+}
+
+.effect-div {
+    background-color: #000000d0;
+}
+
+#products-nav {
+    grid-area: a;
+    background-image: url("https://www.servicesforeducation.co.uk/wp-content/uploads/2020/06/musical-instruments-services-for-education-sfe-music-1000-1400x694.jpg");
+    background-size: cover;
+    text-decoration: none;
+};
+
+#about-nav {
+    grid-area: b;
+    background-image: url("https://cdn-p.smehost.net/sites/239008154bb641859bcbbc74541773c3/wp-content/uploads/2022/11/7_key_members_to_artist_team_v1.jpg");
+    background-size: cover;
+    text-decoration: none;
+};
+
+#contact-us-nav {
+    grid-area: c;
+    background-image: url("https://cms-assets.tutsplus.com/uploads/users/1631/posts/32769/preview_image/TelephoneRinging.jpg");
+    background-size: cover;
+    text-decoration: none;
+};
+
+#faq-nav {
+    grid-area: d;
+    background-image: url("https://www.signupgenius.com/cms/socialMediaImages/would-you-rather.jpg");
+    background-size: cover;
+    text-decoration: none;
+};

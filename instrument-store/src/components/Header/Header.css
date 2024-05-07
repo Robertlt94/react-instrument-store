@@ -13,14 +13,14 @@
 #previous-header-btn {
     position: absolute;
     left: 0;
-    top: 19vh;
+    top: 22vh;
     margin-left: 2rem;
 }
 
 #next-header-btn {
     position: absolute;
     right: 0;
-    top: 19vh;
+    top: 22vh;
     margin-right: 2rem;
 }
 

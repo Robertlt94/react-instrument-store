@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
 
-.dancing-script-header {
-    position: absolute;
-    top: 42vh;
+nav {
+    max-width: fit-content;
 }
 
 .dancing-script-header h1 {
@@ -15,5 +14,7 @@
     padding: 0;
     margin: 0;
     margin-left: 1vw;
+    margin-top: 1vh;
     text-decoration: underline 1px;
+    max-width: fit-content;
 }
