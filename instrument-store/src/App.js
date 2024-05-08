@@ -13,18 +13,20 @@ import FAQPage from './pages/FAQPage/FAQPage';
 
 function App() {
   const [cart, setCart] = useState([]);
+  const [favorites, setFavorites] = useState([]);
+  const [message, setMessage] = useState("");
   const [products, setProducts] = useState(
     [
-      { id: 1, category: "Guitar", name: "Fender 70th Anniversary Player Stratocaster Electric Guitar Nebula Noir", cost: "$999.99", url: "https://media.guitarcenter.com/is/image/MMGS7/M07989000001000-00-600x600.jpg" },
-      { id: 2, category: "Piano", name: "Yamaha P-125ABLB Digital Piano With Wooden Stand and Bench", cost: "$949.99", url: "https://www.guitarcenter.com/Yamaha/P-125ABLB-Digital-Piano-With-Wooden-Stand-and-Bench-1500000395502.gc" },
-      { id: 3, category: "Drum", name: "DW Collector's Series 4-Piece Shell Pack Twisted Walnut Chrome Hardware", cost: "$4,035.00", url: "https://media.guitarcenter.com/is/image/MMGS7/H80431000002001-00-600x600.jpg" },
-      { id: 4, category: "Violin", name: "Yamaha YEV104 Series Electric Violin", cost: "$745.99", url: "https://media.guitarcenter.com/is/image/MMGS7/J33592000000000-00-600x600.jpg" },
-      { id: 5, category: "Chello", name: "Yamaha SVC-210SK Silent Cello Brown", cost: "$3,239.99", url: "https://media.guitarcenter.com/is/image/MMGS7/463028000008000-00-600x600.jpg" },
-      { id: 6, category: "Saxophone", name: "Yamaha YAS-26 Standard Alto Saxophone Silver", cost: "$2,736.00", url: "https://media.guitarcenter.com/is/image/MMGS7/H95233000002000-00-600x600.jpg" },
-      { id: 7, category: "Trumpet", name: "Yamaha YTR-2330 Standard Bb Trumpet Bb Trumpet Silver", cost: "$1,777.00", url: "https://media.guitarcenter.com/is/image/MMGS7/H82869000001001-00-600x600.jpg" },
-      { id: 8, category: "Guitar", name: "Taylor 814ce Builder's Edition 50th Anniversary Limited-Edition Grand Auditorium Acoustic-Electric Guitar Kona Edgeburst", cost: "$4,999.00", url: "https://media.guitarcenter.com/is/image/MMGS7/M08663000001000-00-600x600.jpg" },
-      { id: 9, category: "Piano", name: "Casio GP-510BP Celviano Grand Hybrid Black", cost: "$6,299.00", url: "https://media.guitarcenter.com/is/image/MMGS7/L75140000001000-00-600x600.jpg" },
-      { id: 10, category: "Guitar", name: "Gibson Les Paul Modern Figured Electric Guitar Cobalt Burst" , cost: "$2,999.00", url: "https://media.guitarcenter.com/is/image/MMGS7/M04073000001000-00-600x600.jpg" }
+      { id: 1, category: "Guitar", name: "Fender 70th Anniversary Player Stratocaster Electric Guitar Nebula Noir", cost: "$999.99", image: "https://media.guitarcenter.com/is/image/MMGS7/M07989000001000-00-600x600.jpg" },
+      { id: 2, category: "Piano", name: "Yamaha P-125ABLB Digital Piano With Wooden Stand and Bench", cost: "$949.99", image: "https://media.guitarcenter.com/is/image/MMGS7/M00913000000000-00-600x600.jpg" },
+      { id: 3, category: "Drum", name: "DW Collector's Series 4-Piece Shell Pack Twisted Walnut Chrome Hardware", cost: "$4,035.00", image: "https://media.guitarcenter.com/is/image/MMGS7/H80431000002001-00-600x600.jpg" },
+      { id: 4, category: "Violin", name: "Yamaha YEV104 Series Electric Violin", cost: "$745.99", image: "https://media.guitarcenter.com/is/image/MMGS7/J33592000000000-00-600x600.jpg" },
+      { id: 5, category: "Chello", name: "Yamaha SVC-210SK Silent Cello Brown", cost: "$3,239.99", image: "https://media.guitarcenter.com/is/image/MMGS7/463028000008000-00-600x600.jpg" },
+      { id: 6, category: "Saxophone", name: "Yamaha YAS-26 Standard Alto Saxophone Silver", cost: "$2,736.00", image: "https://media.guitarcenter.com/is/image/MMGS7/H95233000002000-00-600x600.jpg" },
+      { id: 7, category: "Trumpet", name: "Yamaha YTR-2330 Standard Bb Trumpet Bb Trumpet Silver", cost: "$1,777.00", image: "https://media.guitarcenter.com/is/image/MMGS7/H82869000001001-00-600x600.jpg" },
+      { id: 8, category: "Guitar", name: "Taylor 814ce Builder's Edition 50th Anniversary Limited-Edition Grand Auditorium Acoustic-Electric Guitar Kona Edgeburst", cost: "$4,999.00", image: "https://media.guitarcenter.com/is/image/MMGS7/M08663000001000-00-600x600.jpg" },
+      { id: 9, category: "Piano", name: "Casio GP-510BP Celviano Grand Hybrid Black", cost: "$6,299.00", image: "https://media.guitarcenter.com/is/image/MMGS7/L75140000001000-00-600x600.jpg" },
+      { id: 10, category: "Guitar", name: "Gibson Les Paul Modern Figured Electric Guitar Cobalt Burst" , cost: "$2,999.00", image: "https://media.guitarcenter.com/is/image/MMGS7/M04073000001000-00-600x600.jpg" }
     ]
   );
   const [firstImage, setFirstImage] = useState(0);
@@ -55,19 +57,32 @@ function App() {
     thirdImage > 0 ? setThirdImage(thirdImage-1) : setThirdImage(imageCount);
   }
 
+  const addToFavorites = (product) => {
+    setFavorites([...favorites, product]);
+    setMessage(`Added ${product.name} to your favorites.`);
+    console.log(message, favorites);
+  }
+
+  const addToCart = (product) => {
+    setCart([...cart, product]);
+    setMessage(`Added ${product.name} to your shopping cart.`);
+    console.log(message, cart);
+  };
+
+  const removeFromCart = (cart, product) => {
+    setCart(cart.filter());
+  }
+
   return (
     <Router>
       <ShoppingCartProvider>
         {/* <InventoryProvider> */}
           <Routes>
-            {/* <Route path="/" element={<Layout />}> */}
-              <Route path="/" element={<HomePage props={{ images, firstImage, secondImage, thirdImage, nextImage, previousImage }} />} />
-              <Route path="products" element={<ProductsPage />} />
-              <Route path="about" element={<AboutPage />} />
-              <Route path="contact-us" element={<ContactUsPage />} />
-              <Route path="faq" element={<FAQPage />} />
-
-            {/* </Route> */}
+            <Route path="/" element={<HomePage props={{ images, firstImage, secondImage, thirdImage, nextImage, previousImage }} />} />
+            <Route path="products/*" element={<ProductsPage cart={cart} products={products} addToCart={addToCart} />} />
+            <Route path="about" element={<AboutPage />} />
+            <Route path="contact-us" element={<ContactUsPage />} />
+            <Route path="faq" element={<FAQPage />} />
           </Routes>
         {/* </InventoryProvider> */}
       </ShoppingCartProvider>

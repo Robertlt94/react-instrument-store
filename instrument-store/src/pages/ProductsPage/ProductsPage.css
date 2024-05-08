@@ -3,7 +3,38 @@
     margin: 0;
 }
 
-.main-content {
+.product-page {
     height: 100vh;
     width: 100vw;
+    overflow: hidden;
+}
+
+.product-type {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 90vh;
+    overflow-y: scroll;;
+    scrollbar-color: #fff;
+}
+
+.product-type nav {
+    display: flex;
+    flex-direction: column;
+    background-color: #120627;
+}
+
+.product-type nav a {
+    padding: 5vh 0;
+    width: 20vw;
+    font-weight: bold;
+    color: #fff;
+    font-size: 2rem;
+    text-decoration: none;
+    text-align: center;
+}
+
+.product-type nav a:hover:active {
+    background-color: #fff;
+    color: #120627;
 }

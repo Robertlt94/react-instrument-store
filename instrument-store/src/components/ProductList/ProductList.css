@@ -1,0 +1,11 @@
+.product-list {
+    position: absolute;
+    height: 90vh;
+    width: 80vw;
+    right: 0;
+    bottom: 0;
+    background-color: #e1e1e1;
+    display: flex;
+    flex-direction: column;
+    overflow-x: scroll;
+};

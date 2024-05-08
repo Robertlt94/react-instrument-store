@@ -1,0 +1,69 @@
+.product {
+    color: #000;
+    list-style: none;
+    margin: 4vh 4vw;
+    display: grid;
+    grid-template-areas: "a a b b b b"
+                         "a a c c f f"
+                         "a a d d e e";
+    grid-template-rows: 10vh 10vh 10vh;
+    grid-template-columns: 12vw 12vw 12vw 12vw 12vw 12vw;
+    background: #fff;
+    border-radius: 8pt;
+}
+
+.product img {
+    grid-area: a;
+    padding: 2vh 2vw;
+    height: 26vh;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.product h1 {
+    grid-area: b;
+    padding-top: 1rem;
+    margin-right: 3rem;
+}
+
+.product h2 {
+    grid-area: c;
+}
+
+.add-to-fav-btn {
+    grid-area: d;
+    margin: 2.5vh 5vw;
+    color: #ffffff;
+    background-color: #ff4a4a;
+    border-radius: 50pt;
+    font-size: 1.5rem;
+    font-weight: 1000;
+    cursor: pointer;
+
+}
+
+.remove-from-fav-btn {
+    grid-area: d;
+    margin: 2.5vh 5vw;
+    color: #ffffff;
+    background-color: #ff4a4a;
+    border-radius: 50pt;
+    font-size: 1.5rem;
+    font-weight: 1000;
+    cursor: pointer;
+}
+
+.add-to-cart-btn {
+    grid-area: e;
+    margin: 2.5vh 5vw;
+    color: #fff;
+    background-color: #7777ff;
+    border-radius: 50pt;
+    font-size: 1.5rem;
+    font-weight: 1000;
+    cursor: pointer;
+}
+
+.minus-btn, .quantity-input, .plus-btn {
+    margin-top: 5vh;
+}

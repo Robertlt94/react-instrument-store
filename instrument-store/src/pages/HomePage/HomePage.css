@@ -1,21 +1,28 @@
 .home-navigation {
-    height: 50vh;
+    height: 45vh;
     display: grid;
     grid-template-areas: "a a a"
                          "b c d";
-    row-gap: 3vh;
+    grid-template-rows: 20vh 15vh;
+    row-gap: 4vh;
     column-gap: 3vw;
-    margin: 3vh 5vw;
+    margin: 3vh 5vw 0 5vw;
 }
 
-.home-navigation div {
+.home-navigation a {
     text-align: center;
     color: #ffffff;
-    padding: 2rem;
+    border-radius: 8pt;
+    overflow: hidden;
 }
 
 .effect-div {
-    background-color: #000000d0;
+    background-color: #000000e8;
+    padding: 3vh 2vw;
+}
+
+.effect-div p {
+    font-size: 16px;
 }
 
 #products-nav {

@@ -1,0 +1,39 @@
+.quantity-container {
+    display: grid;
+    grid-template-areas: "a a b b c c"
+                         "a a b b c c";
+    grid-template-columns: 4vw 4vw 4vw 4vw 4vw 4vw;
+    grid-template-rows: 5vh 5vh;
+}
+
+.minus-btn {
+    grid-area: a;
+    font-size: 2rem;
+    height: 4vh;
+    width: 3vw;
+    border-top-left-radius: 25pt;
+    border-bottom-left-radius: 25pt;
+    margin-left: 5vw;
+    cursor: pointer;
+}
+
+.quantity-input { 
+    grid-area: b;
+    font-size: 2rem;
+    text-align: center;
+    height: 4vh;
+    width: 4vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.plus-btn {
+    grid-area: c;
+    font-size: 2rem;
+    height: 4vh;
+    width: 3vw;
+    border-top-right-radius: 25pt;
+    border-bottom-right-radius: 25pt;
+    margin-right: 4vw;
+    cursor: pointer;
+}
