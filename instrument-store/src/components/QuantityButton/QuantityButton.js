@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
 import './QuantityButton.css';
 
-const QuantityButton = (inventory, startingValue) => {
-    const [quantity, setQuantity] = useState(1);
-
-    // const setQuantity
+const QuantityButton = ( product, quantity, addQuantity, minusQuantity ) => {
 
     return (
         <div className='quantity-container'>
-            <button className='minus-btn' onClick={() => setQuantity(quantity-1)}>-</button>
-            <input type="number" className="quantity-input" value={quantity} />
-            <button className='plus-btn' onClick={() => setQuantity(quantity+1)}>+</button>
+            {console.log(quantity)}
+            <button className='minus-btn' onClick={minusQuantity}>-</button>
+            <input type="type" inputMode="numeric" className="quantity-input" defaultValue={quantity}/>
+            <button className='plus-btn' onClick={addQuantity}>+</button>
         </div>
     )
 }
