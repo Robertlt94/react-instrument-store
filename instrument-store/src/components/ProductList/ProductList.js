@@ -3,13 +3,12 @@ import "./ProductList.css";
 import { Routes, Route, Link } from "react-router-dom";
 import Product from '../Product/Product';
 
-const ProductList = ({ cart, products, addToCart, quantity, addQuantity, minusQuantity }) => {
+const ProductList = ({ products, addToCart, addToFavorites, removeFromFavorites, addQuantity, minusQuantity, handleOnChange }) => {
 
     return (
         <div className='product-list'>
-            {/* {console.log(quantity)} */}
             <ul>
-                <Product cart={cart} products={products} addToCart={addToCart} quantity={quantity} addQuantity={addQuantity} minusQuantity={minusQuantity} />
+                <Product products={products} addToCart={addToCart} addToFavorites={addToFavorites} removeFromFavorites={removeFromFavorites} addQuantity={addQuantity} minusQuantity={minusQuantity} handleOnChange={handleOnChange} />
             </ul>
         </div>
     );

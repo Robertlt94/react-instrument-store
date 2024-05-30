@@ -17,12 +17,17 @@
     cursor: pointer;
 }
 
-.quantity-input { 
+/* .quantity-input { 
     grid-area: b;
     font-size: 2rem;
     text-align: center;
     height: 4vh;
     width: 4vw;
+    margin-left: auto;
+    margin-right: auto;
+} */
+
+.quantity-contianer p {
     margin-left: auto;
     margin-right: auto;
 }

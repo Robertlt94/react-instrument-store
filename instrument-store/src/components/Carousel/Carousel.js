@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import "./Carousel.css";
 
+// image positioning needs to be fixed so that they're responsive
+
 const Carousel = (props) => {
     let start = props.firstImage;
     let middle = props.secondImage;

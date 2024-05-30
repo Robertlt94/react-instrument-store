@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, {useState} from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import { ShoppingCartProvider } from './context/ShoppingCartContext';
@@ -8,26 +8,25 @@ import ProductsPage from "./pages/ProductsPage/ProductsPage";
 import AboutPage from "./pages/AboutPage/AboutPage";
 import ContactUsPage from "./pages/ContactUsPage/ContactUsPage";
 import FAQPage from './pages/FAQPage/FAQPage';
+import transitions from '@material-ui/core/styles/transitions';
 
 
 
 function App() {
   const [cart, setCart] = useState([]);
-  const [quantity, setQuantity] = useState(1);
-  const [favorites, setFavorites] = useState([]);
   const [message, setMessage] = useState("");
   const [products] = useState(
     [
-      { id: 1, category: "Guitar", name: "Fender 70th Anniversary Player Stratocaster Electric Guitar Nebula Noir", cost: "$999.99", image: "https://media.guitarcenter.com/is/image/MMGS7/M07989000001000-00-600x600.jpg", inventory: 10, inCart: 0 },
-      { id: 2, category: "Piano", name: "Yamaha P-125ABLB Digital Piano With Wooden Stand and Bench", cost: "$949.99", image: "https://media.guitarcenter.com/is/image/MMGS7/M00913000000000-00-600x600.jpg", inventory: 3, inCart: 0 },
-      { id: 3, category: "Drum", name: "DW Collector's Series 4-Piece Shell Pack Twisted Walnut Chrome Hardware", cost: "$4,035.00", image: "https://media.guitarcenter.com/is/image/MMGS7/H80431000002001-00-600x600.jpg", inventory: 5, inCart: 0 },
-      { id: 4, category: "Violin", name: "Yamaha YEV104 Series Electric Violin", cost: "$745.99", image: "https://media.guitarcenter.com/is/image/MMGS7/J33592000000000-00-600x600.jpg", inventory: 7, inCart: 0 },
-      { id: 5, category: "Chello", name: "Yamaha SVC-210SK Silent Cello Brown", cost: "$3,239.99", image: "https://media.guitarcenter.com/is/image/MMGS7/463028000008000-00-600x600.jpg", inventory: 8, inCart: 0 },
-      { id: 6, category: "Saxophone", name: "Yamaha YAS-26 Standard Alto Saxophone Silver", cost: "$2,736.00", image: "https://media.guitarcenter.com/is/image/MMGS7/H95233000002000-00-600x600.jpg", inventory: 2, inCart: 0 },
-      { id: 7, category: "Trumpet", name: "Yamaha YTR-2330 Standard Bb Trumpet Bb Trumpet Silver", cost: "$1,777.00", image: "https://media.guitarcenter.com/is/image/MMGS7/H82869000001001-00-600x600.jpg", inventory: 1, inCart: 0 },
-      { id: 8, category: "Guitar", name: "Taylor 814ce Builder's Edition 50th Anniversary Limited-Edition Grand Auditorium Acoustic-Electric Guitar Kona Edgeburst", cost: "$4,999.00", image: "https://media.guitarcenter.com/is/image/MMGS7/M08663000001000-00-600x600.jpg", inventory: 9, inCart: 0 },
-      { id: 9, category: "Piano", name: "Casio GP-510BP Celviano Grand Hybrid Black", cost: "$6,299.00", image: "https://media.guitarcenter.com/is/image/MMGS7/L75140000001000-00-600x600.jpg", inventory: 5, inCart: 0 },
-      { id: 10, category: "Guitar", name: "Gibson Les Paul Modern Figured Electric Guitar Cobalt Burst" , cost: "$2,999.00", image: "https://media.guitarcenter.com/is/image/MMGS7/M04073000001000-00-600x600.jpg", inventory: 5, inCart: 0 }
+      { id: 1, category: "guitar", name: "Fender 70th Anniversary Player Stratocaster Electric Guitar Nebula Noir", cost: "$999.99", image: "https://media.guitarcenter.com/is/image/MMGS7/M07989000001000-00-600x600.jpg", favorite: false },
+      { id: 2, category: "piano", name: "Yamaha P-125ABLB Digital Piano With Wooden Stand and Bench", cost: "$949.99", image: "https://media.guitarcenter.com/is/image/MMGS7/M00913000000000-00-600x600.jpg", favorite: false },
+      { id: 3, category: "drum", name: "DW Collector's Series 4-Piece Shell Pack Twisted Walnut Chrome Hardware", cost: "$4,035.00", image: "https://media.guitarcenter.com/is/image/MMGS7/H80431000002001-00-600x600.jpg", favorite: false },
+      { id: 4, category: "violin", name: "Yamaha YEV104 Series Electric Violin", cost: "$745.99", image: "https://media.guitarcenter.com/is/image/MMGS7/J33592000000000-00-600x600.jpg", favorite: false },
+      { id: 5, category: "chello", name: "Yamaha SVC-210SK Silent Cello Brown", cost: "$3,239.99", image: "https://media.guitarcenter.com/is/image/MMGS7/463028000008000-00-600x600.jpg", favorite: false },
+      { id: 6, category: "saxophone", name: "Yamaha YAS-26 Standard Alto Saxophone Silver", cost: "$2,736.00", image: "https://media.guitarcenter.com/is/image/MMGS7/H95233000002000-00-600x600.jpg", favorite: false },
+      { id: 7, category: "trumpet", name: "Yamaha YTR-2330 Standard Bb Trumpet Bb Trumpet Silver", cost: "$1,777.00", image: "https://media.guitarcenter.com/is/image/MMGS7/H82869000001001-00-600x600.jpg", favorite: false },
+      { id: 8, category: "guitar", name: "Taylor 814ce Builder's Edition 50th Anniversary Limited-Edition", cost: "$4,999.00", image: "https://media.guitarcenter.com/is/image/MMGS7/M08663000001000-00-600x600.jpg", favorite: false },
+      { id: 9, category: "piano", name: "Casio GP-510BP Celviano Grand Hybrid Black", cost: "$6,299.00", image: "https://media.guitarcenter.com/is/image/MMGS7/L75140000001000-00-600x600.jpg", favorite: false },
+      { id: 10, category: "guitar", name: "Gibson Les Paul Modern Figured Electric Guitar Cobalt Burst" , cost: "$2,999.00", image: "https://media.guitarcenter.com/is/image/MMGS7/M04073000001000-00-600x600.jpg", favorite: false }
     ]
   );
   const [firstImage, setFirstImage] = useState(0);
@@ -59,30 +58,28 @@ function App() {
   }
 
   const addToFavorites = (product) => {
-    setFavorites([...favorites, product]);
+    // setFavorites([...favorites, product]);
+    product.favorite = !product.favorite;
     setMessage(`Added ${product.name} to your favorites.`);
-    console.log(message, favorites);
+    console.log(message);
   }
 
-  const addToCart = (product, quantity) => {
+  const removeFromFavorites = (product) => {
+    product.favorite = !product.favorite;
+    setMessage(`Removed ${product.name} from your favorites.`);
+    console.log(message);
+
+  }
+
+  const addToCart = (product) => {
     setCart([...cart, product]);
-    setMessage(`Added ${product.name} to your shopping cart.`);
-    console.log(message, cart);
+    console.log(cart);
   };
 
-  const removeFromCart = (cart, quantity) => {
-    setCart(cart.filter());
+  const removeFromCart = (i) => {
+    let newArray = cart.filter((item, index) => index !== i);
+    setCart([...newArray]);
   }
-
-  const addQuantity = (product, quantity) => {
-    quantity < product.inventory ? setQuantity(quantity+1) : prompt(`Sorry, we only have ${product.inventory} left in stock.`);
-  }
-
-  const minusQuantity = (quantity) => {
-    quantity > 0 && setQuantity(quantity-1);
-  }
-
-  let guitar = products.filter(product => product.type === "Guitar");
 
   return (
     <Router>
@@ -91,7 +88,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage props={{ images, firstImage, secondImage, thirdImage, nextImage, previousImage }} />} exact />
             {/* <Route path="/products" element={<ProductsPage cart={cart} products={products} addToCart={addToCart} quantity={quantity} addToFavorites={addToFavorites} addQuantity={addQuantity} minusQuantity={minusQuantity} />} exact/> */}
-            <Route path="/products/*" element={<ProductsPage props={{cart, products, addToCart, quantity, addToFavorites, addQuantity, minusQuantity }} />} exact/>
+            <Route path="/products/*" element={<ProductsPage cart={cart} products={products} addToFavorites={addToFavorites} removeFromFavorites={removeFromFavorites} addToCart={addToCart} removeFromCart={removeFromCart} />} exact/>
             <Route path="/about" element={<AboutPage />} exact />
             <Route path="/contact-us" element={<ContactUsPage />} exact />
             <Route path="/faq" element={<FAQPage />} exact />

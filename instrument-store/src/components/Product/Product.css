@@ -39,7 +39,17 @@
     font-size: 1.5rem;
     font-weight: 1000;
     cursor: pointer;
+}
 
+.remove-from-fav-btn {
+    grid-area: d;
+    margin: 2.5vh 5vw;
+    color: #000000;
+    background-color: #ffa4a4;
+    border-radius: 50pt;
+    font-size: 1.5rem;
+    font-weight: 1000;
+    cursor: pointer;
 }
 
 .remove-from-fav-btn {

@@ -1,36 +1,8 @@
-.header {
+.header-nav {
     margin: 0;
     padding: 0;
+    height: 10vh;
     width: 100vw;
-    height: 50vh;
-    top: 0;
-    overflow: hidden;
-    list-style-type: none;
     background-color: #120627;
-    color: #000;
 }
 
-#previous-header-btn {
-    position: absolute;
-    left: 0;
-    top: 22vh;
-    margin-left: 2rem;
-}
-
-#next-header-btn {
-    position: absolute;
-    right: 0;
-    top: 22vh;
-    margin-right: 2rem;
-}
-
-#next-header-btn button, #previous-header-btn button {
-    margin: 0;
-    padding: 1rem;
-    font-size: 2rem;
-    color: #fff;
-    font-weight: bolder;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-}

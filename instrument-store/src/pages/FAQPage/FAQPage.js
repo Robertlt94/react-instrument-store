@@ -1,6 +1,6 @@
 import React from 'react';
 import './FAQPage.css';
-import NavHeader from '../../components/NavHeader/NavHeader';
+import NavHeader from '../../components/Header/Header';
 
 const FAQPage = () => {
 

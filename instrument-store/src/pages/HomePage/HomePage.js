@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Header from "../../components/Header/Header";
+import LandingPageHeader from "../../components/LandingPageHeader/LandingPageHeader";
 import "./HomePage.css";
 
 const Home = ({props}) => {
-        
+
     return (
         <div>
-            <Header props={props}/>
+            <LandingPageHeader props={props} />
             <nav className='home-navigation'>
                 <Link to='/products' id='products-nav'>
                     <div className='effect-div'>

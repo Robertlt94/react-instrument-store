@@ -1,23 +1,18 @@
-import React, {useState} from 'react';
-import './Header.css'
-import Carousel from '../Carousel/Carousel';
+import React from 'react';
+import "./Header.css";
 import Branding from '../Branding/Branding';
+import CartButton from '../CartButton/CartButton';
+import Cart from '../Cart/Cart';
 
-
-const Header = ({props}) => {
+const Header = ({cart, removeFromCart}) => {
 
     return (
-        <div className='header'>
-            <Carousel {...props}/>
+        <div className='header-nav'>
             <Branding />
-            <div id="previous-header-btn" onClick={() => {props.previousImage()}}>
-                <button alt="previous">&#8592;</button>
-            </div>
-            <div id="next-header-btn" onClick={() => {props.nextImage()}}>
-                <button alt="next">&#8594;</button>
-            </div>
+            <CartButton />
+            <Cart cart={cart} removeFromCart={removeFromCart}/>
         </div>
-    );
-};
+    )
+}
 
 export default Header;
