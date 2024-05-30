@@ -61,24 +61,25 @@ function App() {
     // setFavorites([...favorites, product]);
     product.favorite = !product.favorite;
     setMessage(`Added ${product.name} to your favorites.`);
-    console.log(message);
+    // console.log(message);
   }
 
   const removeFromFavorites = (product) => {
     product.favorite = !product.favorite;
     setMessage(`Removed ${product.name} from your favorites.`);
-    console.log(message);
-
+    // console.log(message);
   }
 
   const addToCart = (product) => {
     setCart([...cart, product]);
-    console.log(cart);
+    setMessage(`added ${product.name} to cart.`);
+    // console.log(cart);
   };
 
   const removeFromCart = (i) => {
     let newArray = cart.filter((item, index) => index !== i);
     setCart([...newArray]);
+    setMessage(`Item was removed.`);
   }
 
   return (
@@ -88,7 +89,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage props={{ images, firstImage, secondImage, thirdImage, nextImage, previousImage }} />} exact />
             {/* <Route path="/products" element={<ProductsPage cart={cart} products={products} addToCart={addToCart} quantity={quantity} addToFavorites={addToFavorites} addQuantity={addQuantity} minusQuantity={minusQuantity} />} exact/> */}
-            <Route path="/products/*" element={<ProductsPage cart={cart} products={products} addToFavorites={addToFavorites} removeFromFavorites={removeFromFavorites} addToCart={addToCart} removeFromCart={removeFromCart} />} exact/>
+            <Route path="/products/*" element={<ProductsPage cart={cart} products={products} message={message} addToFavorites={addToFavorites} removeFromFavorites={removeFromFavorites} addToCart={addToCart} removeFromCart={removeFromCart} />} exact/>
             <Route path="/about" element={<AboutPage />} exact />
             <Route path="/contact-us" element={<ContactUsPage />} exact />
             <Route path="/faq" element={<FAQPage />} exact />

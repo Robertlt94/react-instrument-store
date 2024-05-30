@@ -4,12 +4,12 @@ import "./ProductsPage.css";
 import Header from "../../components/Header/Header";
 import ProductList from "../../components/ProductList/ProductList";
 
-const ProductsPage = ({cart, products, addToFavorites, removeFromFavorites, addToCart, removeFromCart}) => {
+const ProductsPage = ({cart, products, message, addToFavorites, removeFromFavorites, addToCart, removeFromCart}) => {
     const category = useParams();
     
     return (
         <div className="product-page">
-            <Header cart={cart} removeFromCart={removeFromCart} />
+            <Header cart={cart} message={message} removeFromCart={removeFromCart} />
             <div className="product-type" >
                 <nav>
                     <Link to='/products'>All</Link>
